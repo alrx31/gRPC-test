@@ -19,7 +19,8 @@ public class GreeterService : Greeter.GreeterBase
         });
     }
 
-    public override async Task SayHelloStream(IAsyncStreamReader<HelloRequest> requestStream, IServerStreamWriter<HelloReply> responseStream, ServerCallContext context)
+    public override async Task SayHelloStream(IAsyncStreamReader<HelloRequest> requestStream,
+        IServerStreamWriter<HelloReply> responseStream, ServerCallContext context)
     {
         
             await foreach (var request in requestStream.ReadAllAsync())

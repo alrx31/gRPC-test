@@ -1,9 +1,15 @@
+using Google.Protobuf.WellKnownTypes;
 using GrpcExample.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddSingleton<LoggingInt>();
 
 // Add services to the container.
-builder.Services.AddGrpc();
+builder.Services.AddGrpc(option =>
+{
+    option.Interceptors.Add<LoggingInt>();
+});
+
 
 var app = builder.Build();
 
